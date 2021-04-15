@@ -3,6 +3,8 @@ package com.daniela.imccalculator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import com.daniela.imccalculator.databinding.ActivityMainBinding
 
@@ -64,5 +66,30 @@ class MainActivity : AppCompatActivity() {
         bmi.toString()
         result.setText("IMC: ${bmi}\n ${Message}")
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        var inflate = menuInflater
+        inflate.inflate(R.menu.main_menu, menu)
+
+        return true
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId)
+        {
+            R.id.reset -> {
+               val cleanEditWeight = binding.editWeight
+                val cleanEditHeight = binding.editHeight
+                val cleanMessage = binding.message
+                cleanEditHeight.setText("")
+                cleanEditWeight.setText("")
+                cleanMessage.setText("")
+
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
